@@ -92,10 +92,14 @@ class UserController extends Controller
                     }
                     $algo_info = [
                         'id' => $algo->id,
-                        'problem_aproach' => $algo->problem_aproach,
-                        'problem_example' => $algo->problem_example,
-                        'problem_solved_explained' => $algo->problem_solved_explained,
+                        'title' => $algo->title,
+                        'problem' => $algo->problem,
+                        'problem_examples' => $algo->problem_examples,
+                        'initial_code' => $algo->initial_code,
                         'problem_solved' => $algo->problem_solved,
+                        'tests_input' => $algo->tests_input,
+                        'tests_results_output' => $algo->tests_results_output,
+                        'orderMandatory' => $algo->orderMandatory,
                         'name' => $content_algo->name,
                         'description' => $content_algo->description,
                         'link_text' => $content_algo-> link_text

@@ -17,10 +17,14 @@ class CreateAlgorithmsTable extends Migration
         Schema::create('algorithms', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->timestamps();
-            $table->text('problem_aproach');
-            $table->text('problem_example');
-            $table->text('problem_solved_explained');
+            $table->text('title');
+            $table->text('problem');
+            $table->text('problem_examples');
+            $table->text('initial_code');
             $table->text('problem_solved');
+            $table->text('tests_input');
+            $table->text('tests_results_output');
+            $table->boolean('orderMandatory');
             $table->uuid('topic_id')->unsigned()->nullable();
             $table->foreign('topic_id')->references('id')->on('topics')
                 ->onDelete('cascade');

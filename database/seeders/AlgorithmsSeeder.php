@@ -15,7 +15,54 @@ class AlgorithmsSeeder extends Seeder
      */
     public function run()
     {
-        //
+        //newseeds
+        $uuid_algo1 =  Uuid::generate()->string; 
+        $algo1_title = "Two Number Sum";
+        $algo1_problem = "Write a function that takes in a non-empty array of distinct integers and an \n
+            integer representing a target sum. If any two numbers in the input array sum \n
+            up to the target sum, the function should return them in an array, in any \n
+            order. If no two numbers sum up to the target sum, the function should return \n
+            an empty array. \n
+            \n
+            Note that the target sum has to be obtained by summing two different integers \n
+            in the array; you can't add a single integer to itself in order to obtain the \n
+            target sum.\n
+            \n
+            You can assume that there will be at most one pair of numbers summing up to \n
+            the target sum.\n
+      ";
+        $algo1_problem_examples = "Sample Input \n
+            Array = [3, 5, -4, 8, 11, 1, -1, 6] \n
+            targetSum = 10 \n
+            Sample Output \n
+            [-1, 11] \n";
+        $algo1_initial_code = "def twoNumberSum (array, targetSum): \n  # Write your code here.\n  Pass \n";
+        $algo1_problem_solved = "def  twoNumberSum (array,targetSum): \n
+         num= {} \n
+         for num in array: \n
+          potentialMatch = targetSum - num \n
+          if potentialMatch in nums: \n
+           return [potentialMatch,num] \n
+          else:  \n
+         Nums[num] = True \n
+         Return [] \n";
+        // json
+        $algo1_tests_inputs = 
+            array(
+                array('array' => [3, 5, -4, 8, 11, 1, -1, 6], 'targetSum' => 10),
+                array('array' => [4, 6], 'targetSum' => 10),
+                array('array' => [4, 6, 1], 'targetSum' => 10),
+                array('array' => [4, 6, 1, -3], 'targetSum' => 3),
+            );
+        $algo1_tests_results_input = array(
+            [11, -1],
+            [4, 6],
+            [4, 1],
+            [6, -3]
+        );
+
+        $algo1_mandatory_order = false;
+
         $uuid_algo1 =  Uuid::generate()->string;
         $algo_aproach = "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
             You may assume that each input would have exactly one solution, and you may not use the same element twice.
@@ -43,10 +90,14 @@ class AlgorithmsSeeder extends Seeder
         ]);
         DB::table('algorithms')->insert([
             'id' => $uuid_algo1,
-            'problem_aproach' => $algo_aproach,
-            'problem_example' => $algo_example,
-            'problem_solved_explained' => $algo_solved_explained,
-            'problem_solved' => $algo_problem_solved,
+            'title' => $algo1_title,
+            'problem' => $algo1_problem,
+            'problem_examples' => $algo1_problem_examples,
+            'initial_code' => $algo1_initial_code,
+            'problem_solved' => $algo1_problem_solved,
+            'tests_input' =>json_encode($algo1_tests_inputs),
+            'tests_results_output' => json_encode($algo1_tests_results_input),
+            'orderMandatory' => $algo1_mandatory_order,
             'content_id' => $uuid_content1
         ]);
     }
